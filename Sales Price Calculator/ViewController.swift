@@ -186,8 +186,9 @@ class ViewController: UIViewController {
         defaults.set(tax, forKey: "myLocalTaxRate")
         
         var calcTax = (tax / 100) + 1
-        var calcSalePrice = originalPrice / ((salePercent / 100) + 1)
-        let rate = calcSalePrice * calcTax
+        var calcSalePrice = originalPrice * (salePercent / 100)
+        var reducedAmount = originalPrice - calcSalePrice
+        let rate = reducedAmount * calcTax
         
         calculatedSalePrice = rate
     }
